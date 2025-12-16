@@ -114,6 +114,20 @@ The crack detection model is based on **YOLOv8** and was trained on a custom dat
 
 ## Streamlit Setup on Jetson Nano (8GB)
 
+### Key Features
+- Upload **images** (`.jpg`, `.png`) or **videos** (`.mp4`, `.avi`) for analysis
+- Annotated output with cracks highlighted
+- Automatic **crack count** for images
+- Download annotated images or videos
+
+### How It Works
+1. The app creates **uploads/** and **outputs/** folders to store input files and processed results.
+2. Users upload an image or video through the **file uploader**.
+3. The app runs **YOLOv8 inference**:
+   - **Image:** Saves annotated image to `outputs/`, displays it, shows crack count, and provides a download button.
+   - **Video:** Processes frames, saves annotated video to `outputs/video_results/`, displays video, and provides download option.
+4. All processing uses the **trained YOLOv8 model weights (`best.pt`)**.
+
 To run the crack detection web app on a Jetson Nano, follow these steps:
 
 ### 1. Update system packages and download Streamlit
@@ -122,6 +136,31 @@ sudo apt-get update
 sudo apt-get upgrade -y
 pip3 install streamlit --no-deps
 ```
+### Run the Web App
+```bash
+streamlit run cracksfinal.py
+```
+
+### Streamlit UI Interface
+<img src="data/Stremlit_UI.png" width="200"/>
+
+
+### Streamlit Inference 
+<img src="data/Streamlit_inference.png" width="200"/>
+
+You can also upload a raw image and download the annotated image through the Download Annotated Image button 
+
+
+## Conclusion
+
+This project demonstrates **real-time crack detection and segmentation** using YOLOv8 on the Jetson Nano.  
+Key takeaways:  
+- Pixel-level crack detection for industrial inspection.  
+- Seamless integration with a Streamlit web app for interactive testing.  
+- Optimized for edge devices like Jetson Nano for real-time performance.  
+- Dataset and model weights can be adapted to different materials or industrial environments.
+
+
 
 
 
