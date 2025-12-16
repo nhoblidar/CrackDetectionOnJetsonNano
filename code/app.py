@@ -32,7 +32,7 @@ st.write("Upload an image or video to detect cracks.")
 # Load YOLO model
 @st.cache_resource
 def load_model():
-    return YOLO("modelweights/best.pt")
+    return YOLO("best.pt")
 
 model = load_model()
 
