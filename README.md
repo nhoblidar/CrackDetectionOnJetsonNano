@@ -2,6 +2,7 @@
 
 **Project Overview**  
 This project implements **Real-time crack detection and segmentation** on the **NVIDIA Jetson Nano** using deep learning. It identifies cracks at **pixel-level precision**, making it suitable for industrial inspection, quality control etc.  
+This project also includes a **Streamlit application** to run real-time crack detection using the trained YOLOv8 model (`best.pt`). Users can upload images or videos and get **annotated results with crack counts**.
 
 Key Features:  
 - Real-time inference on Jetson Nano.  
@@ -72,7 +73,7 @@ The crack detection model is based on **YOLOv8** and was trained on a custom dat
   from ultralytics import YOLO
   
   # Load trained model
-  model = YOLO('crack_model.pt')
+  model = YOLO('best.pt')
   
   # Read image
   img = cv2.imread('sample_image.jpg')
@@ -110,5 +111,17 @@ The crack detection model is based on **YOLOv8** and was trained on a custom dat
 
 ### Model Inference Result
 ![Crack Detection Result](data/Inference_sample.jpeg)
+
+## Streamlit Setup on Jetson Nano (8GB)
+
+To run the crack detection web app on a Jetson Nano, follow these steps:
+
+### 1. Update system packages and download Streamlit
+```bash
+sudo apt-get update
+sudo apt-get upgrade -y
+pip3 install streamlit --no-deps
+```
+
 
 
